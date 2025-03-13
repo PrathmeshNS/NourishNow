@@ -13,13 +13,12 @@ public class AvailableFood {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long aId;
-	private String date;
+	private String dateTime;
 	private String description;
-	private String time;
 	private int approxPersonCanEat;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "hotelUserId",referencedColumnName = "id")
+	@JoinColumn(name = "hotelUserId", referencedColumnName = "id")
 	private Users hotelUsers;
 
 	public Long getaId() {
@@ -30,12 +29,12 @@ public class AvailableFood {
 		this.aId = aId;
 	}
 
-	public String getDate() {
-		return date;
+	public String getDateTime() {
+		return dateTime;
 	}
 
-	public void setDate(String date) {
-		this.date = date;
+	public void setDateTime(String dateTime) {
+		this.dateTime = dateTime;
 	}
 
 	public String getDescription() {
@@ -46,13 +45,6 @@ public class AvailableFood {
 		this.description = description;
 	}
 
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
 
 	public int getApproxPersonCanEat() {
 		return approxPersonCanEat;
@@ -69,5 +61,5 @@ public class AvailableFood {
 	public void setHotelUsers(Users hotelUsers) {
 		this.hotelUsers = hotelUsers;
 	}
-	
+
 }

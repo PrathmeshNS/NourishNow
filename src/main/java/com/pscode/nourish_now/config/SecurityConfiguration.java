@@ -44,6 +44,7 @@ public class SecurityConfiguration {
 						.requestMatchers("ngo/**").hasAuthority("ROLE_NGO")  // NGO access only
 						.requestMatchers("hotel/**").hasAuthority("ROLE_HOTEL")  // Hotel access only
 						.requestMatchers("history/**").hasAnyAuthority("ROLE_ADMIN","ROLE_NGO","ROLE_HOTEL")
+						.requestMatchers("available-food/**").hasAnyAuthority("ROLE_ADMIN","ROLE_NGO","ROLE_HOTEL")
 						.anyRequest().authenticated())
 				.httpBasic(Customizer.withDefaults()) // Enable basic auth
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless				.addFilterAfter(new TenantFilter(), AnonymousAuthenticationFilter.class)

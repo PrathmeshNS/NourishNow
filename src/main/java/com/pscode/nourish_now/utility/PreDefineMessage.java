@@ -8,9 +8,13 @@ public class PreDefineMessage {
 	//Messages
 	
 	public final static String USER_APPROVED_SUCCESSFULLY = "User Get Approved Successfully!!!";
+	public final static String DATA_INSERTED_SUCCESSFULLY = "Data Inserted Successfully!!!";
 	public final static String SOMETHING_WENT_WRONG = "Something Went Wrong!!!";
 	public final static String DETAILS_ARE_VERIFYING = "Your Details Not Verified Yet!!!\n Please Stay Tune!!";
 	public final static String USER_NOT_FOUND = "User Not Found!!";
+	public final static String INVALID_DETAILS = "Hotel Or NGO Details Are Invalid!!!";
+
+
 	
 	//QUERY
 	

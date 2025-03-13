@@ -16,7 +16,7 @@ import com.pscode.nourish_now.enums.UserRole;
 import com.pscode.nourish_now.exception.custome.UserAlreadyExistException;
 import com.pscode.nourish_now.service.UserService;
 
-import org.springframework.web.bind.annotation.RequestParam;
+import java.util.List;
 
 
 @RestController
@@ -48,9 +48,13 @@ public class HotelController {
 	}
 	
 	@GetMapping("/")
-	public String greetHotel(@RequestParam String param) {
+	public String greetHotel() {
 		return new String("Hello Hotel User");
 	}
-	
-	
+
+	@GetMapping("get-all-ngo")
+	public List<Users> getAllNgo(){
+		return service.getAllNgo();
+	}
+
 }

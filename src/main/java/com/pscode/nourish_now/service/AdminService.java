@@ -20,6 +20,9 @@ public class AdminService {
 	@Autowired
 	private UserRepository repository;
 
+	@Autowired
+	private UserService userService;
+
 	public ResponseEntity<String> approveUser(Long id) {
 		if (repository.approveUser(ReviewStatus.TRUE, id)>0) {
 			return ResponseEntity.status(HttpStatus.OK).body(PreDefineMessage.USER_APPROVED_SUCCESSFULLY);
@@ -28,15 +31,11 @@ public class AdminService {
 	}
 
 	public List<Users> getAllHotel() {
-		return repository.findAll().stream()
-				.filter(hotel -> hotel.getRole().equals(UserRole.HOTEL))
-				.collect(Collectors.toList());
+		return userService.getAllHotel();
 	}
-		
+
 	public List<Users> getAllNgo() {
-		return repository.findAll().stream()
-				.filter(ngo -> ngo.getRole().equals(UserRole.NGO))
-				.collect(Collectors.toList());
+		return userService.getAllNgo();
 	}
 
 }

@@ -33,10 +33,10 @@ public class HistoryService {
 		String dataTime = SystemDateTimeProvider.returnDateTime();
 		history.setDate(dataTime.substring(0, 10));
 		history.setTime(dataTime.substring(11));
-		history.setHotelUsers(findUserById(history.getHotelUsers().getId()));
-		history.setNgoUsers(findUserById(history.getNgoUsers().getId()));
-		if ((history.getHotelUsers().getRole().equals(UserRole.HOTEL)) && 
-				(history.getNgoUsers().getRole().equals(UserRole.NGO))) {
+		Users hotelUsers = findUserById(history.getHotelUsers().getId());
+		Users ngoUsers = findUserById(history.getNgoUsers().getId());
+		if ((hotelUsers.getRole().equals(UserRole.HOTEL)) &&
+				(ngoUsers.getRole().equals(UserRole.NGO))) {
 			return repository.save(history);
 		}
 		return null;
