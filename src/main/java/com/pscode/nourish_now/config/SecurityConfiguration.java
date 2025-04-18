@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.annotation.web.configurers.LogoutConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -38,7 +40,7 @@ public class SecurityConfiguration {
 	SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 		
  		RequestCache nullRequestCache= new NullRequestCache();
-		return http.csrf(csrf -> csrf.disable()) // Disable CSRF for stateless APIs
+		return http.csrf(AbstractHttpConfigurer::disable) // Disable CSRF for stateless APIs
 				.authorizeHttpRequests(auth -> auth.requestMatchers("*/login", "*/register").permitAll() // Allow public
 						.requestMatchers("admin/**").hasAuthority("ROLE_ADMIN") // Admin access only
 						.requestMatchers("ngo/**").hasAuthority("ROLE_NGO")  // NGO access only
@@ -50,7 +52,7 @@ public class SecurityConfiguration {
 				.sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS)) // Stateless				.addFilterAfter(new TenantFilter(), AnonymousAuthenticationFilter.class)
 				.addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class)
 				.requestCache(cache -> cache.requestCache(nullRequestCache))
-				.logout(logout -> logout.permitAll()) // Enable logout
+				.logout(LogoutConfigurer::permitAll) // Enable logout
 				.build();
 	}
 

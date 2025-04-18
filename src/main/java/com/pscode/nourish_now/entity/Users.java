@@ -5,12 +5,17 @@ import com.pscode.nourish_now.dto.UserDto;
 import com.pscode.nourish_now.enums.ReviewStatus;
 import com.pscode.nourish_now.enums.UserRole;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class Users {
 
 	@Id
@@ -27,103 +32,9 @@ public class Users {
 	private UserRole role;
 	private ReviewStatus status;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	private UserProfile profile;
 
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getRegistrationNo() {
-		return registrationNo;
-	}
-
-	public void setRegistrationNo(String registrationNo) {
-		this.registrationNo = registrationNo;
-	}
-
-	public String getDateOfJoining() {
-		return dateOfJoining;
-	}
-
-	public void setDateOfJoining(String dateOfJoining) {
-		this.dateOfJoining = dateOfJoining;
-	}
-
-	public String getContactNo() {
-		return contactNo;
-	}
-
-	public void setContactNo(String contactNo) {
-		this.contactNo = contactNo;
-	}
-
-	public UserRole getRole() {
-		return role;
-	}
-
-	public void setRole(UserRole role) {
-		this.role = role;
-	}
-
-	public ReviewStatus getStatus() {
-		return status;
-	}
-
-	public void setStatus(ReviewStatus status) {
-		this.status = status;
-	}
-
-	public String getWebsite() {
-		return website;
-	}
-
-	public void setWebsite(String website) {
-		this.website = website;
-	}
-
-	@Override
-	public String toString() {
-		return "Users [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", address="
-				+ address + ", registrationNo=" + registrationNo + ", dateOfJoining=" + dateOfJoining + ", contactNo="
-				+ contactNo + ", website=" + website + ", role=" + role + ", status=" + status + "]";
-	}
-
-	
 	@JsonIgnore
 	public UserDto getUserDto() {
 		UserDto dto = new UserDto();

@@ -6,8 +6,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AvailableFood {
 
 	@Id
@@ -20,46 +26,5 @@ public class AvailableFood {
 	@ManyToOne
 	@JoinColumn(name = "hotelUserId", referencedColumnName = "id")
 	private Users hotelUsers;
-
-	public Long getaId() {
-		return aId;
-	}
-
-	public void setaId(Long aId) {
-		this.aId = aId;
-	}
-
-	public String getDateTime() {
-		return dateTime;
-	}
-
-	public void setDateTime(String dateTime) {
-		this.dateTime = dateTime;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-
-	public int getApproxPersonCanEat() {
-		return approxPersonCanEat;
-	}
-
-	public void setApproxPersonCanEat(int approxPersonCanEat) {
-		this.approxPersonCanEat = approxPersonCanEat;
-	}
-
-	public Users getHotelUsers() {
-		return hotelUsers;
-	}
-
-	public void setHotelUsers(Users hotelUsers) {
-		this.hotelUsers = hotelUsers;
-	}
 
 }

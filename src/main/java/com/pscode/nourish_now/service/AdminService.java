@@ -1,7 +1,6 @@
 package com.pscode.nourish_now.service;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -10,7 +9,6 @@ import org.springframework.stereotype.Service;
 
 import com.pscode.nourish_now.entity.Users;
 import com.pscode.nourish_now.enums.ReviewStatus;
-import com.pscode.nourish_now.enums.UserRole;
 import com.pscode.nourish_now.repository.UserRepository;
 import com.pscode.nourish_now.utility.PreDefineMessage;
 

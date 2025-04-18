@@ -7,8 +7,16 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 @Entity
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class History {
 
 	@Id
@@ -24,52 +32,5 @@ public class History {
 	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "ngo_user_id", referencedColumnName = "id")
 	private Users ngoUsers;
-
-	public Long gethId() {
-		return hId;
-	}
-
-	public void sethId(Long hId) {
-		this.hId = hId;
-	}
-
-	public String getTime() {
-		return time;
-	}
-
-	public void setTime(String time) {
-		this.time = time;
-	}
-
-	public String getDate() {
-		return date;
-	}
-
-	public void setDate(String date) {
-		this.date = date;
-	}
-
-	
-	public Users getHotelUsers() {
-		return hotelUsers;
-	}
-
-	public void setHotelUsers(Users hotelUsers) {
-		this.hotelUsers = hotelUsers;
-	}
-
-	public Users getNgoUsers() {
-		return ngoUsers;
-	}
-
-	public void setNgoUsers(Users ngoUsers) {
-		this.ngoUsers = ngoUsers;
-	}
-
-	@Override
-	public String toString() {
-		return "History [hId=" + hId + ", time=" + time + ", date=" + date + ", hotelUsers=" + hotelUsers
-				+ ", ngoUsers=" + ngoUsers + "]";
-	}
 
 }
