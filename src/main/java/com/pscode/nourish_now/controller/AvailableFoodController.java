@@ -25,9 +25,7 @@ public class AvailableFoodController {
 	public ResponseEntity<?> postMethodName(@RequestBody AvailableFood availableFood) {
 		if (availableFoodService.saveAvailableFood(availableFood) != null)
 			return  new ResponseEntity<>(PreDefineMessage.DATA_INSERTED_SUCCESSFULLY,HttpStatus.CREATED);
-
 		return  new ResponseEntity<>(PreDefineMessage.SOMETHING_WENT_WRONG, HttpStatus.INTERNAL_SERVER_ERROR);
-
 	}
 	
 	

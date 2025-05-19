@@ -41,7 +41,7 @@ public class SecurityConfiguration {
 		
  		RequestCache nullRequestCache= new NullRequestCache();
 		return http.csrf(AbstractHttpConfigurer::disable) // Disable CSRF for stateless APIs
-				.authorizeHttpRequests(auth -> auth.requestMatchers("*/login", "*/register").permitAll() // Allow public
+				.authorizeHttpRequests(auth -> auth.requestMatchers("*/login", "*/register","/donation/**").permitAll() // Allow public
 						.requestMatchers("admin/**").hasAuthority("ROLE_ADMIN") // Admin access only
 						.requestMatchers("ngo/**").hasAuthority("ROLE_NGO")  // NGO access only
 						.requestMatchers("hotel/**").hasAuthority("ROLE_HOTEL")  // Hotel access only

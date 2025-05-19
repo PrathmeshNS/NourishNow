@@ -36,7 +36,8 @@ public class AvailableFoodService {
 	public AvailableFood saveAvailableFood(AvailableFood food) {
 		Users hotelUser = getHotelUser(food.getHotelUsers().getId());
 		food.setDateTime(SystemDateTimeProvider.returnDateTime());
-		if (hotelUser != null){
+        assert hotelUser != null;
+        if (!hotelUser.getEmail().isEmpty()) {
 			return repository.save(food);
 		}
 		return null;

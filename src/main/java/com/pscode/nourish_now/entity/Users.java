@@ -32,8 +32,8 @@ public class Users {
 	private UserRole role;
 	private ReviewStatus status;
 
-	@OneToOne(cascade = CascadeType.ALL)
-	private UserProfile profile;
+//	@OneToOne(cascade = CascadeType.ALL)
+//	private UserProfile profile;
 
 	@JsonIgnore
 	public UserDto getUserDto() {

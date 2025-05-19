@@ -30,6 +30,10 @@ public class GlobalExceptionHandler {
 		if (exception instanceof ExpiredJwtException) {
 			problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.FORBIDDEN, exception.getMessage());
 		}
+
+		if (exception instanceof NullPointerException) {
+			problemDetail = ProblemDetail.forStatusAndDetail(HttpStatus.INTERNAL_SERVER_ERROR, "User Not Found!! Enter valid Email And Password!");
+		}
 		
 		return problemDetail;
 
